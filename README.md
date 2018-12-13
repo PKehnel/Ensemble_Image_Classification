@@ -21,14 +21,22 @@ output: dataframe saved as pickle file
 not complete
 
 load the dataframe
+
 run majority voting to create ensemble
+
 output:
+
 number of correct predictions for each model
+
 accuracy of each model
 
 
 # data
 
-from the imagenet challenge 2012
+images are from testset of the imagenet challenge 2012 
 
 http://www.image-net.org/challenges/LSVRC/2012/
+
+pickle file: prediction mix 
+
+contains sample output for networkPredictions run with resnet, vgg16, densenet and the example images
