@@ -12,11 +12,10 @@ True labels are currently the names of images, or just input them as array (only
 
 output: dataframe saved as pickle file 
 
-Labels:  house  | house_likelihood ; room  | room_likelihood
-
-model 1:     apples | 0.2%             ; room  | 0.8%
-
-model 2:     house  | 0.5%             ; room  | 0.7%
+| Label |  house  |  house_likelihood  |  room  |  room_likelihood  |
+| ------------- | ------------- | ------------- | ------------- | ------------- |
+|  model 1:  | apples  |  0.2%  |  room  |  0.8%  |
+|  model 2:  | house  |  0.5%  |  room  |  0.7%  |
 
 # ensemble
 not complete
@@ -26,3 +25,10 @@ run majority voting to create ensemble
 output:
 number of correct predictions for each model
 accuracy of each model
+
+
+# data
+
+from the imagenet challenge 2012
+
+http://www.image-net.org/challenges/LSVRC/2012/
