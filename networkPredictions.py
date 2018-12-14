@@ -31,11 +31,10 @@ def predict_label():
         for x in range(len(data)):
             processed_image = modelEnsemleArt[i].preprocess_input(data[x])
             prediction = modelEnsemble[i].predict(processed_image)
-            decode_prediction = decode_predictions(prediction, top=1)
-            print(decode_prediction)
-            df.set_value(index=i, col=prediction_likelihood[2 * x], value= decode_prediction[0][0][1])
-            df.set_value(index=i, col=prediction_likelihood[2 * x + 1], value=decode_prediction[0][0][2])
-
+            decode_prediction = decode_predictions(prediction, top=1)  # decode the results into a list of tuples (class, description, probability)
+            print(decode_prediction)                                   # change top to x to get x highest predictions
+            df.at[i, prediction_likelihood[2 * x]] = decode_prediction[0][0][1]     # save description
+            df.at[i, prediction_likelihood[2 * x + 1]] = decode_prediction[0][0][2]     # save probability
 
 # initialize models
 
@@ -44,11 +43,11 @@ vgg_model = vgg16.VGG16(weights = 'imagenet')
 densenet_model = densenet.DenseNet169(weights = 'imagenet')
 mobile_model = mobilenet.MobileNet(weights = 'imagenet')
 
-modelEnsemble = [resnet_model, vgg_model, densenet_model]
+modelEnsemble = [mobile_model, densenet_model]
 # list of used models: resnet_model, vgg_model, mobile_model,  densenet_model
-modelEnsemleArt = [resnet50, vgg16, densenet]
+modelEnsemleArt = [mobilenet, densenet]
 # list of model nets: resnet50, vgg16, mobilenet,   densenet
-model_names = ['resnet50', 'vgg16', 'densenet']
+model_names = ['mobilenet', 'densenet']
 # list of model Names: 'resnet50', 'vgg16', 'mobilenet','densenet'
 
 
