@@ -7,14 +7,11 @@ from keras.applications.imagenet_utils import decode_predictions
 import os
 import matplotlib.pyplot as plt
 
-
-# collect all pictures from the images folder. Resize them and add them to data
-
 def collect_data():
     dir_path = 'images' #relativ link to the image folder
     for image_name in os.listdir(dir_path):
         image_path = os.path.join(dir_path, image_name)
-        img = load_img(image_path, target_size=(224, 224))
+        img = load_img(image_path, target_size=(224, 224)) # array.reshape(-1,size,size,1) for other Models
         img_array = img_to_array(img)
         img_array = np.expand_dims(img_array, axis=0)
         trueLabels.append(image_name.partition('.')[0])  # split to remove file extensions like ".jpg"
